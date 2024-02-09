@@ -90,8 +90,13 @@ char nw_getchar( struct nwindow *nw, int blocking )
 		if(r<=0) return 0;
 		if(e.type==EVENT_KEY_DOWN) {
 			return e.code;
-       		}
+		}
 	}
+}
+
+int nw_move( struct nwindow *nw, int x, int y )
+{
+	return syscall_object_move(nw->fd, x, y);
 }
 
 int nw_fd( struct nwindow *w )

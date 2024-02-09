@@ -48,6 +48,7 @@ struct kobject *kobject_addref(struct kobject *k);
 
 struct kobject * kobject_copy( struct kobject *ksrc );
 
+int kobject_move( struct kobject *kobject, int x, int y );
 int kobject_read(struct kobject *kobject, void *buffer, int size, kernel_io_flags_t flags );
 int kobject_lookup( struct kobject *kobject, const char *name, struct kobject **newobj );
 int kobject_write(struct kobject *kobject, void *buffer, int size, kernel_io_flags_t flags );

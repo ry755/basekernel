@@ -51,6 +51,7 @@ int syscall_object_close(int fd);
 int syscall_object_set_tag(int fd, char *tag);
 int syscall_object_get_tag(int fd, char *buffer, int buffer_size);
 int syscall_object_max();
+int syscall_object_move(int fd, int x, int y);
 
 /* Syscalls that query or affect the whole system state. */
 

@@ -496,6 +496,14 @@ int sys_object_max()
 	return max_fd;
 }
 
+int sys_object_move(int fd, int x, int y)
+{
+	if(!is_valid_object(fd)) return KERROR_INVALID_OBJECT;
+
+	struct kobject *p = current->ktable[fd];
+	return kobject_move(p, x, y);
+}
+
 int sys_system_stats(struct system_stats *s)
 {
 	if(!is_valid_pointer(s,sizeof(*s))) return KERROR_INVALID_ADDRESS;
@@ -621,6 +629,8 @@ int32_t syscall_handler(syscall_t n, uint32_t a, uint32_t b, uint32_t c, uint32_
 		return sys_object_size(a, (int *) b, c);
 	case SYSCALL_OBJECT_MAX:
 		return sys_object_max(a);
+	case SYSCALL_OBJECT_MOVE:
+		return sys_object_move(a, b, c);
 	case SYSCALL_SYSTEM_STATS:
 		return sys_system_stats((struct system_stats *) a);
 	case SYSCALL_BCACHE_STATS:

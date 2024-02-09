@@ -141,6 +141,12 @@ int graphics_write(struct graphics *g, int *cmd, int length )
 	return 0;
 }
 
+int graphics_move( struct graphics *g, int x, int y )
+{
+	graphics_clip(g, x, y, g->clip.w, g->clip.h);
+	return 0;
+}
+
 uint32_t graphics_width(struct graphics * g)
 {
 	return g->clip.w;
@@ -167,8 +173,8 @@ int graphics_clip(struct graphics *g, int x, int y, int w, int h)
 	if(x<0 || y<0 || w<0 || h<0) return 0;
 
 	// Child origin is relative to parent's clip origin.
-	x += g->clip.x;
-	y += g->clip.y;
+	x += g->parent->clip.x;
+	y += g->parent->clip.y;
 
 	// Child origin must fall within parent clip
 	if(x>=g->bitmap->width || y>=g->bitmap->width) return 0;
@@ -221,7 +227,6 @@ static void graphics_rect_internal(struct graphics *g, int x, int y, int w, int 
 		}
 	}
 }
-
 
 void graphics_rect(struct graphics *g, int x, int y, int w, int h )
 {

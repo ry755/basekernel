@@ -12,6 +12,7 @@ struct window * window_create( struct window *parent, int x, int y, int w, int h
 struct window * window_addref( struct window *w );
 void window_delete( struct window *w );
 
+int  window_move( struct window *w, int x, int y );
 int  window_width( struct window *w );
 int  window_height( struct window *w );
 

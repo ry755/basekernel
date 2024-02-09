@@ -24,6 +24,7 @@ struct graphics *graphics_create(struct graphics *parent );
 struct graphics *graphics_addref(struct graphics *g );
 void graphics_delete(struct graphics *g);
 
+int  graphics_move(struct graphics *g, int x, int y);
 uint32_t graphics_width(struct graphics *g);
 uint32_t graphics_height(struct graphics *g);
 void graphics_fgcolor(struct graphics *g, struct graphics_color c);

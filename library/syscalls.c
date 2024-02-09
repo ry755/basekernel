@@ -168,6 +168,11 @@ int syscall_object_max()
 	return syscall(SYSCALL_OBJECT_MAX, 0, 0, 0, 0, 0);
 }
 
+int syscall_object_move(int fd, int x, int y)
+{
+	return syscall(SYSCALL_OBJECT_MOVE, fd, x, y, 0, 0);
+}
+
 int syscall_system_stats(struct system_stats *s)
 {
 	return syscall(SYSCALL_SYSTEM_STATS, (uint32_t) s, 0, 0, 0, 0);
@@ -197,4 +202,3 @@ int syscall_device_driver_stats(char * name, void * stats)
 {
 	return syscall(SYSCALL_DEVICE_DRIVER_STATS, (uint32_t) name, (uint32_t) stats, 0, 0, 0);
 }
-

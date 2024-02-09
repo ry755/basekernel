@@ -56,6 +56,11 @@ void window_delete( struct window *w )
 	}
 }
 
+int  window_move( struct window *w, int x, int y )
+{
+	return graphics_move(w->graphics, x, y);
+}
+
 int  window_width( struct window *w )
 {
 	return graphics_width(w->graphics);
@@ -99,5 +104,3 @@ int  window_write_graphics( struct window *w, int *cmd, int size )
 {
 	return graphics_write(w->graphics,cmd,size);	
 }
-
-

@@ -172,6 +172,11 @@ struct kobject * kobject_create_dir_from_dir( struct kobject *kobject, const cha
 	return 0;
 }
 
+int kobject_move( struct kobject *kobject, int x, int y )
+{
+	return window_move(kobject->data.window, x, y);
+}
+
 int kobject_read(struct kobject *kobject, void *buffer, int size, kernel_io_flags_t flags )
 {
 	int actual = 0;
